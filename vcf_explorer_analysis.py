@@ -135,10 +135,4 @@ def calculate_variant_density(
         density.append(count)
         positions.append(window_start + window_size // 2)
 
-        i += step
-
-        # Safety to prevent infinite loop if step=0 (shouldn't happen)
-        if step <= 0:
-            break
-
     return positions, density
