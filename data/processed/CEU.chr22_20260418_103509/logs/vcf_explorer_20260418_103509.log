@@ -1,6 +1,0 @@
-[2026-04-18 10:35:09,485] [__main__] [INFO] [vcf_explorer.py:121] [VCF Explorer 1.0.0 started]
-[2026-04-18 10:35:09,485] [__main__] [INFO] [vcf_explorer.py:78] [Output directories created]
-[2026-04-18 10:35:09,544] [__main__] [INFO] [vcf_explorer.py:82] [Successfully loaded: 59790 variants from path: /mnt/4452EF315A6ECACB/Programming/Python/my_projects/bioinformatics/vcf_explorer/data/raw/CEU.chr22.vcf]
-[2026-04-18 10:35:09,780] [vcf_explorer_visualiser] [INFO] [vcf_explorer_visualiser.py:49] [Saving file: filter_types.png, to directory: /mnt/4452EF315A6ECACB/Programming/Python/my_projects/bioinformatics/vcf_explorer/data/processed/CEU.chr22_20260418_103509/visualisations]
-[2026-04-18 10:35:17,146] [vcf_explorer_visualiser] [INFO] [vcf_explorer_visualiser.py:96] [Saving file: variant_density.png, to directory: /mnt/4452EF315A6ECACB/Programming/Python/my_projects/bioinformatics/vcf_explorer/data/processed/CEU.chr22_20260418_103509/visualisations]
-[2026-04-18 10:35:23,370] [vcf_explorer_visualiser] [INFO] [vcf_explorer_visualiser.py:133] [Saving file: quality_scores.png, to directory: /mnt/4452EF315A6ECACB/Programming/Python/my_projects/bioinformatics/vcf_explorer/data/processed/CEU.chr22_20260418_103509/visualisations]
