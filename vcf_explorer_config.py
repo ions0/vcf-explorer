@@ -8,15 +8,34 @@ import logging
 from pathlib import Path
 from datetime import datetime
 
+import yaml
+
 SCRIPT_PATH = Path(__file__).resolve().parent
 DATA_PATH = SCRIPT_PATH / "data"
 DEFAULT_VCF_FILE = DATA_PATH / "raw" / "CEU.chr22.vcf"
-FIGSIZE = (14, 10) 
+FIG_SIZE = (14, 10) 
 VALID_EXTENSIONS = {".vcf"}
-VERSION = "1.0.0"
+VERSION = "1.0.1"
 
 WINDOW_SIZE = 5000
 STEP_SIZE = 1000
+
+# Override with vcf_explorer_config.yaml if present
+config_file = SCRIPT_PATH / "vcf_explorer_config.yaml"
+if config_file.exists():
+    with open(config_file) as f:
+        cfg = yaml.safe_load(f)
+
+    WINDOW_SIZE = cfg.get("analysis", {}).get("window_size", WINDOW_SIZE)
+    STEP_SIZE = cfg.get("analysis", {}).get("step_size", STEP_SIZE)
+    FIG_SIZE = tuple(cfg.get("visualisation", {}).get("fig_size", FIG_SIZE))
+
+    vcf_subpath = cfg.get("paths", {}).get("default_vcf_file")
+    if vcf_subpath:
+        DEFAULT_VCF_FILE = DATA_PATH / vcf_subpath
+
+    VALID_EXTENSIONS = set(
+        cfg.get("analysis", {}).get("valid_extensions", VALID_EXTENSIONS))
 
 def setup_output_directories(output_dir: Path) -> None:
     """
@@ -55,8 +74,10 @@ def validate_config() -> None:
             STEP_SIZE exceeds WINDOW_SIZE.
     """
     if WINDOW_SIZE <= 0 or STEP_SIZE <= 0:
+        logger.error("WINDOW_SIZE and STEP_SIZE must be positive integers.")
         raise ValueError("WINDOW_SIZE and STEP_SIZE must be positive integers.")
     if STEP_SIZE > WINDOW_SIZE:
+        logger.error("STEP_SIZE should not exceed WINDOW_SIZE.")
         raise ValueError("STEP_SIZE should not exceed WINDOW_SIZE.")
 
 def setup_logging(log_dir: Path) -> None:

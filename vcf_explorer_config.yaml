@@ -1,0 +1,19 @@
+# VCF Explorer: vcf_explorer_config.yaml
+# YAML Configuration file for VCF Explorer
+#
+# Contains paths and analysis parameters
+
+
+# Analysis settings
+analysis:
+  window_size: 10000
+  step_size: 5000
+  valid_extensions: [".vcf"]
+
+# Visualisation settings
+visualisation:
+  fig_size: [14, 10]
+
+# Path settings
+paths:
+  default_vcf_file: "raw/CEU.chr22.vcf"

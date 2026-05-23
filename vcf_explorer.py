@@ -33,8 +33,8 @@ Output Structure:
 
 Author: Jared Cambridge
 Date: April 01, 2026
-Updated: April 13, 2026
-Version: 1.0.0
+Updated: May 23, 2026
+Version: 1.0.1
 """
 
 import logging
@@ -90,14 +90,14 @@ def main(vcf_path=None, output_dir=None):
     print_stats(stats_dict)   
 
     plot_filter_types(
-        stats_dict["filter_counts"], config.FIGSIZE, 
+        stats_dict["filter_counts"], config.FIG_SIZE, 
                                             output_dir / "visualisations", vcf_name)
     positions, counts = calculate_variant_density(
         vcf, vcf["POS"].max(), config.WINDOW_SIZE, config.STEP_SIZE)
-    plot_variant_density(positions, counts, config.FIGSIZE, 
+    plot_variant_density(positions, counts, config.FIG_SIZE, 
                                             output_dir / "visualisations", vcf_name)
     q_scores = extract_qual(vcf)
-    plot_qual_score(q_scores, config.FIGSIZE, output_dir / "visualisations", vcf_name)
+    plot_qual_score(q_scores, config.FIG_SIZE, output_dir / "visualisations", vcf_name)
 
 if __name__ == "__main__":
 
