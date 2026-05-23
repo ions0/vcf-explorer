@@ -29,6 +29,8 @@ vcf_explorer/
 ├── vcf_explorer_io.py              # File Loading
 ├── vcf_explorer_reporter.py        # Console output formatting
 ├── vcf_explorer_visualiser.py      # Plot generation
+├── vcf_explorer_config.py          # Main config file
+├── vcf_explorer_config.yaml        # YAML config file
 ├── data/
 │   ├── raw/                        # Place VCF files here
 │   └── processed/                  # Output files written here
@@ -96,20 +98,19 @@ Each run creates a timestamped folder inside the output directory containing:
 - Assumes a single chromosome per file — multi-chromosome VCFs will produce misleading density plots.
 - INFO and FORMAT fields are not parsed — loaded as raw strings only.
 - Sample-level genotype data is not analysed.
-- Window size and step size can only be changed by editing config.py directly.
 
 ---
 
 ## Version History
 
 - **1.0.0** (19/04/2026): Initial public release
-
+- **1.0.1** (23/05/2026): YAML config support; analysis parameters, valid extensions, figure size, and default VCF path now configurable via vcf_explorer_config.yaml
 ---
 
 ## Future Improvements
 
 - [ ] **Extend argument options** — Add `--no-display` to suppress plot windows, `--window-size` and `--step-size` to override config values from the CLI
-- [ ] **Config file support** — Allow analysis parameters (window size, step size, size bins) to be set via a YAML file instead of editing `config.py` directly
+- [x] **Config file support** — Allow analysis parameters (window size, step size, size bins) to be set via a YAML file instead of editing `config.py` directly
 - [ ] **Compressed/indexed VCF support** — Add `.vcf.gz` and `.bcf` support via `pysam` or `cyvcf2`
 - [ ] **INFO field parsing** — Parse structured data from the INFO column (allele frequency, depth, etc)
 - [ ] **Sample-level analysis** — Use FORMAT and sample columns to calculate genotype stats like heterozygosity rates and per-sample missing data.
@@ -120,6 +121,6 @@ Each run creates a timestamped folder inside the output directory containing:
 
 ## Author
 
-Jared Cambridge - April 2026
+Jared Cambridge - May 2026
 
 
